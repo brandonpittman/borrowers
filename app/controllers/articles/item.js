@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  itemController: 'articles/item',
   states: ['borrowed', 'returned'],
   autoSave: function() {
     if (!this.get('model.isNew')) {

@@ -4,25 +4,13 @@
       <th>Description</th>
       <th>Notes</th>
       <th>Borrowed since</th>
-      <th></th>
+      <th><a href="#" {{action "setShowReturned" "showReturned"}}>State</a>Toggle View</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    {{#each itemController='articles/item'}}
-      <tr>
-        <td>{{model.description}}</td>
-        <td>{{model.notes}}</td>
-        <td>{{formatted-date model.createdAt 'LL'}}</td>
-        <td>{{view "select" content=states selection=model.state}}</td>
-        <td>
-          {{#if model.isSaving}}
-            <p>Saving...</p>
-          {{else}}
-          <td><a href="#" {{action 'delete' model}}>Delete</a></td>
-          {{/if}}
-        </td>
-      </tr>
+    {{#each filteredArticles as |article|}}
+      {{articles/article-row article=article save="save" delete="delete" articleStates=possibleStates}}
     {{/each}}
   </tbody>
 </table
