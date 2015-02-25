@@ -1,0 +1,10 @@
+<td>{{article.description}}</td>
+<td>{{article.notes}}</td>
+<td>{{formatted-date article.createdAt 'LL'}}</td>
+<td>{{view "select" content=articleStates selection=article.state}}</td>
+<td><a href="#" {{action "deleteArticle" article}}>Delete</a></td>
+<td>
+  {{#if article.isSaving}}
+    <p>Saving...</p>
+  {{/if}}
+</td>
